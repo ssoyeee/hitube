@@ -18,7 +18,6 @@ export const postJoin = async (req, res) => {
             errorMessage: "This username/email is already taken.",
         });
     }
-
     try{
     await User.create({
         name,
@@ -33,7 +32,6 @@ export const postJoin = async (req, res) => {
         pageTitle,
         errorMessage: error._message,
     });
-    
 }
 };
 
@@ -57,7 +55,8 @@ export const postLogin = async (req, res) => {
             errorMessage: "Wrong password",
         });
     }
-
+    req.session.loggedIn = true;
+    req.session.user = user;
     return res.redirect("/");
 };
 

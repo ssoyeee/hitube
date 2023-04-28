@@ -4,6 +4,7 @@ import session from "express-session";
 import rootRouter from "./routers/rootRouter";
 import videoRouter from "./routers/videoRouter";
 import userRouter from "./routers/userRouter";
+import { localsMiddleware } from "./middlewares";
 
 
 
@@ -25,18 +26,19 @@ app.use(
     })
 );
 
-app.use((req, res, next) => {
-    req.sessionStore.all((error, sessions) => {
-        console.log(sessions);
-        next();
-    });
-});
-
-app.get("/add-one", (req, res, next) => {
-    req.session.potato += 1;
-    return res.send(`${req.session.id}\n${req.session.potato}`);
-});
-
+// app.use((req, res, next) => {
+// if you want to see all the people logged in:
+//     req.sessionStore.all((error, sessions) => {
+//         console.log(sessions);
+//         next();
+//     });
+// });
+// session, cookies
+// app.get("/add-one", (req, res, next) => {
+//     req.session.potato += 1;
+//     return res.send(`${req.session.id}\n${req.session.potato}`);
+// });
+app.use(localsMiddleware);
 app.use("/", rootRouter);
 app.use("/videos", videoRouter);
 app.use("/users", userRouter);
