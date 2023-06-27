@@ -115,6 +115,7 @@ export const finishGithubLogin = async (req, res) => {
     let existingUser = await User.findOne({email: emailObj.email});
     if(!existingUser){
         const user = await User.create({
+            avatarUrl: userData.avatar_url,
             name:userData.name,
             username: userData.login,
             email:emailObj.email,
