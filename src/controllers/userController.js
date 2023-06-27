@@ -133,7 +133,9 @@ export const finishGithubLogin = async (req, res) => {
     //res.send(JSON.stringify(json));
 };
 export const edit = (req,res) => res.render("edituser", {pageTitle: "Edit User"});
-export const remove = (req,res) => res.render("removeuser", {pageTitle: "Remove User"});
-export const logout = (req, res) => res.render("logout",{pageTitle: "Log Out"});
+export const logout = (req, res) => {
+    req.session.destroy();
+    return res.redirect("/");
+};
 export const see = (req, res) => res.render("profile", {pageTitle: "Profile"});
 export const seeuser = (req,res) => res.render("seeuser", {pageTitle: "See User"});
