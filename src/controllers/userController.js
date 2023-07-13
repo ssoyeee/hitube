@@ -137,5 +137,13 @@ export const logout = (req, res) => {
     req.session.destroy();
     return res.redirect("/");
 };
+
+
+export const getEdit = (req, res) => {
+    return res.render("edit-profile", {pageTitle: "Edit Profile", user: req.session.user});
+}; 
+export const postEdit = (req, res) => {
+    return res.render("edit-profile");
+}
 export const see = (req, res) => res.render("profile", {pageTitle: "Profile"});
 export const seeuser = (req,res) => res.render("seeuser", {pageTitle: "See User"});

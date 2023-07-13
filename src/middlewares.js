@@ -5,7 +5,7 @@ export const localsMiddleware = (req, res, next) => {
     }
     //req.locals.loggedIn = Boolean(req.session.loggedIn);
     res.locals.siteName = "Hitube";
-    res.locals.loggedInUser = req.session.user;
+    res.locals.loggedInUser = req.session.user || {};
     console.log(res.locals);
     next();
 };
