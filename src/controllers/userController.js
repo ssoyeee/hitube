@@ -146,4 +146,4 @@ export const postEdit = (req, res) => {
     return res.render("edit-profile");
 }
 export const see = (req, res) => res.render("profile", {pageTitle: "Profile"});
-export const seeuser = (req,res) => res.render("seeuser", {pageTitle: "See User"});
+//export const seeuser = (req,res) => res.render("seeuser", {pageTitle: "See User"});
